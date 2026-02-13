@@ -52,7 +52,14 @@ button {
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    transition: 0.2s ease;
+    pointer-events: auto;
 }
+
+button:hover {
+    transform: scale(1.05);
+}
+
 
 #yesBtn {
     background-color: #ff4d6d;
