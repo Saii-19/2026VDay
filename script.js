@@ -4,20 +4,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const yesBtn = document.getElementById("yesBtn");
     const buttonContainer = document.querySelector(".buttons");
 
-    /* ------------ NO BUTTON MOVES INSIDE BUTTON AREA ------------ */
+    /* ---------------- NO BUTTON SMART MOVE ---------------- */
 
     if (noBtn && buttonContainer) {
 
-        // Set initial position
-        noBtn.style.left = "120px";
-        noBtn.style.top = "0px";
+        let isActivated = false;
 
         noBtn.addEventListener("mouseenter", function () {
 
             const containerRect = buttonContainer.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
 
-            const maxX = containerRect.width - noBtn.offsetWidth;
-            const maxY = containerRect.height + 20;
+            // On first hover convert to absolute without jumping
+            if (!isActivated) {
+                isActivated = true;
+
+                const offsetLeft = btnRect.left - containerRect.left;
+                const offsetTop = btnRect.top - containerRect.top;
+
+                noBtn.style.position = "absolute";
+                noBtn.style.left = offsetLeft + "px";
+                noBtn.style.top = offsetTop + "px";
+            }
+
+            const maxX = buttonContainer.offsetWidth - noBtn.offsetWidth;
+            const maxY = buttonContainer.offsetHeight;
 
             const x = Math.random() * maxX;
             const y = Math.random() * maxY;
@@ -27,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    /* ------------ YES BUTTON HEART EXPLOSION + REDIRECT ------------ */
+    /* ---------------- YES BUTTON HEART EXPLOSION ---------------- */
 
     if (yesBtn) {
 
