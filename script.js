@@ -2,43 +2,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
-    const buttonContainer = document.querySelector(".buttons");
+    const container = document.querySelector(".buttons");
 
-    /* ---------------- NO BUTTON SMART MOVE ---------------- */
+    /* ------------ NO BUTTON ESCAPE ------------ */
 
-    if (noBtn && buttonContainer) {
-
-        let isActivated = false;
+    if (noBtn && container) {
 
         noBtn.addEventListener("mouseenter", function () {
 
-            const containerRect = buttonContainer.getBoundingClientRect();
-            const btnRect = noBtn.getBoundingClientRect();
+            const maxX = container.offsetWidth - noBtn.offsetWidth;
+            const maxY = container.offsetHeight - noBtn.offsetHeight;
 
-            // On first hover convert to absolute without jumping
-            if (!isActivated) {
-                isActivated = true;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
 
-                const offsetLeft = btnRect.left - containerRect.left;
-                const offsetTop = btnRect.top - containerRect.top;
-
-                noBtn.style.position = "absolute";
-                noBtn.style.left = offsetLeft + "px";
-                noBtn.style.top = offsetTop + "px";
-            }
-
-            const maxX = buttonContainer.offsetWidth - noBtn.offsetWidth;
-            const maxY = buttonContainer.offsetHeight;
-
-            const x = Math.random() * maxX;
-            const y = Math.random() * maxY;
-
-            noBtn.style.left = x + "px";
-            noBtn.style.top = y + "px";
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
         });
     }
 
-    /* ---------------- YES BUTTON HEART EXPLOSION ---------------- */
+    /* ------------ YES BUTTON ------------ */
 
     if (yesBtn) {
 
@@ -58,23 +41,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 document.body.appendChild(heart);
 
-                const x = (Math.random() - 0.5) * 600;
-                const y = (Math.random() - 0.5) * 600;
-
-                setTimeout(() => {
-                    heart.style.transform = `translate(${x}px, ${y}px)`;
-                    heart.style.opacity = "0";
-                }, 10);
-
-                setTimeout(() => {
-                    heart.remove();
-                }, 1000);
-            }
-
-            setTimeout(() => {
-                window.location.href = "page2.html";
-            }, 900);
-        });
-    }
-
-});
+                c
