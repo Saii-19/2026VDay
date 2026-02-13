@@ -57,6 +57,15 @@ img {
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
+.box img {
+    display: block;
+    margin: 20px auto 0 auto;
+    max-width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(255, 77, 109, 0.3);
+}
+
+
 .buttons {
     position: relative;
     margin-top: 20px;
