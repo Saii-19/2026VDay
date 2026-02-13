@@ -2,43 +2,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
+    const buttonContainer = document.querySelector(".buttons");
 
-    /* ---------------------------
-       FIX 1: NO BUTTON MOVES 
-       INSIDE SCREEN ONLY
-    ---------------------------- */
+    /* ------------ NO BUTTON MOVES INSIDE BUTTON AREA ------------ */
 
-    if (noBtn) {
+    if (noBtn && buttonContainer) {
 
-        noBtn.style.position = "fixed";
+        // Set initial position
+        noBtn.style.left = "120px";
+        noBtn.style.top = "0px";
 
         noBtn.addEventListener("mouseenter", function () {
 
-            const btnWidth = noBtn.offsetWidth;
-            const btnHeight = noBtn.offsetHeight;
+            const containerRect = buttonContainer.getBoundingClientRect();
 
-            const maxX = window.innerWidth - btnWidth - 10;
-            const maxY = window.innerHeight - btnHeight - 10;
+            const maxX = containerRect.width - noBtn.offsetWidth;
+            const maxY = containerRect.height + 20;
 
-            const x = Math.max(0, Math.random() * maxX);
-            const y = Math.max(0, Math.random() * maxY);
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
 
             noBtn.style.left = x + "px";
             noBtn.style.top = y + "px";
         });
     }
 
-
-    /* ---------------------------
-       FIX 2: YES BUTTON CLICK
-       HEART EXPLOSION + REDIRECT
-    ---------------------------- */
+    /* ------------ YES BUTTON HEART EXPLOSION + REDIRECT ------------ */
 
     if (yesBtn) {
 
         yesBtn.addEventListener("click", function () {
 
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 25; i++) {
 
                 const heart = document.createElement("div");
                 heart.innerHTML = "❤️";
