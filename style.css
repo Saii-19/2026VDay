@@ -50,34 +50,30 @@ img {
 
 .buttons {
     position: relative;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    width: 220px;              /* fixed space for buttons */
+    height: 60px;              /* fixed height so layout won’t shift */
     margin-top: 15px;
 }
 
-button {
-    padding: 10px 25px;
-    font-size: 18px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-button:hover {
-    transform: scale(1.07);
+.buttons button {
+    position: absolute;
 }
 
 #yesBtn {
+    left: 0;
     background-color: #ff4d6d;
     color: white;
 }
 
 #noBtn {
+    right: 0;
     background-color: gray;
     color: white;
-    position: fixed;
     transition: left 0.2s ease, top 0.2s ease;
+}
+
+
+button:hover {
+    transform: scale(1.07);
 }
 
