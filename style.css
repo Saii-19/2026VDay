@@ -5,7 +5,7 @@ body {
     overflow: hidden;
 }
 
-/* Floating soft hearts background */
+/* Background hearts */
 body::before {
     content: "❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️";
     position: fixed;
@@ -35,7 +35,6 @@ body::before {
 
 img {
     width: 250px;
-    margin-bottom: 0;
 }
 
 .box {
@@ -43,37 +42,40 @@ img {
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 10px;
 }
 
 .buttons {
     position: relative;
-    width: 220px;              /* fixed space for buttons */
-    height: 60px;              /* fixed height so layout won’t shift */
-    margin-top: 15px;
+    margin-top: 20px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
-.buttons button {
-    position: absolute;
+/* Button style */
+button {
+    padding: 10px 25px;
+    font-size: 18px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
 }
 
 #yesBtn {
-    left: 0;
     background-color: #ff4d6d;
     color: white;
 }
 
 #noBtn {
-    right: 0;
     background-color: gray;
     color: white;
-    transition: left 0.2s ease, top 0.2s ease;
+    position: relative;   /* Important: normal initially */
 }
-
-
-button:hover {
-    transform: scale(1.07);
-}
-
