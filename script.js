@@ -6,12 +6,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* ---------------- NO BUTTON ESCAPE ---------------- */
 
-    if (noBtn && box) {
+   /* ---------------- SUPER ESCAPE NO BUTTON ---------------- */
 
-        noBtn.addEventListener("mouseenter", function () {
+if (noBtn && box) {
+
+    box.addEventListener("mousemove", function (e) {
+
+        const btnRect = noBtn.getBoundingClientRect();
+        const distanceX = Math.abs(e.clientX - (btnRect.left + btnRect.width / 2));
+        const distanceY = Math.abs(e.clientY - (btnRect.top + btnRect.height / 2));
+
+        // If cursor gets close (70px radius)
+        if (distanceX < 70 && distanceY < 70) {
 
             const boxRect = box.getBoundingClientRect();
-            const btnRect = noBtn.getBoundingClientRect();
 
             const maxX = boxRect.width - btnRect.width - 20;
             const maxY = boxRect.height - btnRect.height - 20;
@@ -22,8 +30,10 @@ document.addEventListener("DOMContentLoaded", function () {
             noBtn.style.position = "absolute";
             noBtn.style.left = randomX + "px";
             noBtn.style.top = randomY + "px";
-        });
-    }
+        }
+    });
+}
+
 
     /* ---------------- YES BUTTON HEART EXPLOSION ---------------- */
 
