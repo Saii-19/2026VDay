@@ -62,5 +62,6 @@ button {
 #noBtn {
     background-color: gray;
     color: white;
-    position: absolute;
+    position: fixed;
+    transition: transform 0.3s ease;   /* Smooth movement */
 }
