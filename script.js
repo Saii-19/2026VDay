@@ -2,26 +2,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
-    const container = document.querySelector(".buttons");
+    const box = document.querySelector(".box");
 
-    /* ------------ NO BUTTON ESCAPE ------------ */
+    /* ---------------- NO BUTTON ESCAPE ---------------- */
 
-    if (noBtn && container) {
+    if (noBtn && box) {
 
         noBtn.addEventListener("mouseenter", function () {
 
-            const maxX = container.offsetWidth - noBtn.offsetWidth;
-            const maxY = container.offsetHeight - noBtn.offsetHeight;
+            const boxRect = box.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+
+            const maxX = boxRect.width - btnRect.width - 20;
+            const maxY = boxRect.height - btnRect.height - 20;
 
             const randomX = Math.random() * maxX;
             const randomY = Math.random() * maxY;
 
+            noBtn.style.position = "absolute";
             noBtn.style.left = randomX + "px";
             noBtn.style.top = randomY + "px";
         });
     }
 
-    /* ------------ YES BUTTON ------------ */
+    /* ---------------- YES BUTTON HEART EXPLOSION ---------------- */
 
     if (yesBtn) {
 
@@ -41,4 +45,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 document.body.appendChild(heart);
 
-                c
+                const x = (Math.random() - 0.5) * 600;
+                const y = (Math.random() - 0.5) * 600;
+
+                setTimeout(() => {
+                    heart.style.transform = `translate(${x}px, ${y}px)`;
+                    heart.style.opacity = "0";
+                }, 10);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 1000);
+            }
+
+            setTimeout(() => {
+                window.location.href = "page2.html";
+            }, 900);
+        });
+    }
+
+});
