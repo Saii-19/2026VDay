@@ -16,6 +16,7 @@ body::before {
     width: 200%;
     height: 200%;
     animation: float 20s linear infinite;
+    pointer-events: None;
 }
 
 @keyframes float {
