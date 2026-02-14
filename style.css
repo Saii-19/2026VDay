@@ -6,7 +6,7 @@ body {
     overflow: hidden;
 }
 
-/* Background hearts */
+/* Background hearts 
 body::before {
     content: "❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️";
     position: fixed;
@@ -19,7 +19,7 @@ body::before {
     animation: float 20s linear infinite;
     pointer-events: none;
 }
-
+*/
 .container {
     display: flex;
     flex-direction: column;
