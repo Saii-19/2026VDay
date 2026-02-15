@@ -96,6 +96,8 @@ button {
     border: none;
     cursor: pointer;
     transition: 0.2s ease;
+    background-color: #ff4d6d;
+    color: white;
 }
 
 button:hover {
